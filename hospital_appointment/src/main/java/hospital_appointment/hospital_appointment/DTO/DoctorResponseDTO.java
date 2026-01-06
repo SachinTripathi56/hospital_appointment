@@ -2,17 +2,17 @@ package hospital_appointment.hospital_appointment.DTO;
 
 public class DoctorResponseDTO {
     
-    private String DocId;
+    private int DocId;
     private String name;
      private String qualification;
     private String experience ;
-    private boolean  availabilityStatus;
+    private String  availabilityStatus;
 
-    public String getDocId() {
+    public int getDocId() {
         return this.DocId;
     }
 
-    public void setDocId(String DocId) {
+    public void setDocId(int DocId) {
         this.DocId = DocId;
     }
 
@@ -40,15 +40,13 @@ public class DoctorResponseDTO {
         this.experience = experience;
     }
 
-    public boolean isAvailabilityStatus() {
+   
+
+    public String getAvailabilityStatus() {
         return this.availabilityStatus;
     }
 
-    public boolean getAvailabilityStatus() {
-        return this.availabilityStatus;
-    }
-
-    public void setAvailabilityStatus(boolean availabilityStatus) {
+    public void setAvailabilityStatus(String availabilityStatus) {
         this.availabilityStatus = availabilityStatus;
     }
 

@@ -1,10 +1,11 @@
 package hospital_appointment.hospital_appointment.DTO;
 
 public class DoctorRequestDTO {
+    private int id;
     
  private String qualification;
     private String experience ;
-    private boolean  availabilityStatus;
+    private  String availabilityStatus;
 
     public String getQualification() {
         return qualification;
@@ -22,12 +23,22 @@ public class DoctorRequestDTO {
         this.experience = experience;
     }
 
-    public boolean isAvailabilityStatus() {
-        return availabilityStatus;
+   
+
+    public void setAvailabilityStatus(String availabilityStatus) {
+        this.availabilityStatus = availabilityStatus;
     }
 
-    public void setAvailabilityStatus(boolean availabilityStatus) {
-        this.availabilityStatus = availabilityStatus;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getAvailabilityStatus() {
+        return availabilityStatus;
     }
 
 }

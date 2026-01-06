@@ -15,7 +15,7 @@ public class Doctor {
     private int id;
     private String qualification;
     private String experience ;
-    private boolean  availabilityStatus;
+    private String  availabilityStatus;
      
 
     @OneToOne
@@ -54,11 +54,11 @@ public class Doctor {
         this.experience = experience;
     }
 
-    public boolean isAvailabilityStatus() {
+    public String isAvailabilityStatus() {
         return availabilityStatus;
     }
 
-    public void setAvailabilityStatus(boolean availabilityStatus) {
+    public void setAvailabilityStatus(String availabilityStatus) {
         this.availabilityStatus = availabilityStatus;
     }
     
