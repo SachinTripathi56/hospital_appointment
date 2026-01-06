@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 
 public class UserRequestDTO {
 
+
 @NotBlank
 private String name;
 
@@ -19,6 +20,10 @@ private String phone_no;
 @Email(message = "Invalid email format")
 @NotBlank
 private String email;
+
+private String role;
+
+
 
   
 
@@ -54,6 +59,14 @@ private String email;
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
 

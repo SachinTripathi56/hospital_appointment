@@ -12,15 +12,13 @@ import hospital_appointment.hospital_appointment.GlobalExceptions.ResourceNotFou
 import hospital_appointment.hospital_appointment.repository.AppointmentRepo;
 import hospital_appointment.hospital_appointment.repository.DoctorRepo;
 import hospital_appointment.hospital_appointment.repository.Patientrepo;
-import hospital_appointment.hospital_appointment.repository.UserRepo;
 
 @Component
 public class AppointmentService {
   
     @Autowired
     private DoctorRepo doctorRepo;
-    @Autowired
-    private UserRepo userRepo;
+   
     @Autowired
     private Patientrepo patientrepo;
     @Autowired
