@@ -49,6 +49,7 @@ private PatientResponseDTO MapToResponse1(Patient pa){
     dto.setName(pa.getUser().getName());
     dto.setAge(pa.getAge());
     dto.setBllodGoup(pa.getBllodGoup());
+    System.out.println(pa.getBllodGoup());
     dto.setGender(pa.getGender());
 
     return dto;

@@ -5,11 +5,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import hospital_appointment.hospital_appointment.DTO.PatientRequestDTO;
 import hospital_appointment.hospital_appointment.DTO.PatientResponseDTO;
 import hospital_appointment.hospital_appointment.Service.PatientService;
 
+@RestController
 public class PatientController {
     
     @Autowired

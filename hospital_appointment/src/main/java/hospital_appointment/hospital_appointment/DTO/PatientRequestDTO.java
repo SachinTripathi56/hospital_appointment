@@ -2,9 +2,9 @@ package hospital_appointment.hospital_appointment.DTO;
 
 public class PatientRequestDTO {
     private int id;
-     private int age;
+    private int age;
    private String gender;
-   private String bllodGoup;
+   private String bloodGroup;
 
     public int getAge() {
         return this.age;
@@ -23,11 +23,11 @@ public class PatientRequestDTO {
     }
 
     public String getBllodGoup() {
-        return this.bllodGoup;
+        return this.bloodGroup;
     }
 
     public void setBllodGoup(String bllodGoup) {
-        this.bllodGoup = bllodGoup;
+        this.bloodGroup = bllodGoup;
     }
 
     public int getId() {

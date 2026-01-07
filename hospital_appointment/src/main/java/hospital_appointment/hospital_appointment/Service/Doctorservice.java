@@ -1,6 +1,7 @@
 package hospital_appointment.hospital_appointment.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import hospital_appointment.hospital_appointment.DTO.DoctorRequestDTO;
 import hospital_appointment.hospital_appointment.DTO.DoctorResponseDTO;
@@ -9,7 +10,7 @@ import hospital_appointment.hospital_appointment.Entities.User;
 import hospital_appointment.hospital_appointment.GlobalExceptions.ResourceNotFound;
 import hospital_appointment.hospital_appointment.repository.DoctorRepo;
 import hospital_appointment.hospital_appointment.repository.UserRepo;
-
+@Service
 public class Doctorservice {
     
 @Autowired
