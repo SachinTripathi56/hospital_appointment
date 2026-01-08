@@ -1,16 +1,14 @@
 package hospital_appointment.hospital_appointment.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import hospital_appointment.hospital_appointment.DTO.PatientResponseDTO;
 import hospital_appointment.hospital_appointment.DTO.UserRequestDTO;
 import hospital_appointment.hospital_appointment.DTO.UserResponseDTO;
 import hospital_appointment.hospital_appointment.Entities.User;
+import hospital_appointment.hospital_appointment.GlobalExceptions.ResourceNotFound;
 import hospital_appointment.hospital_appointment.repository.UserRepo;
 
 @Component
@@ -57,11 +55,11 @@ public class UserService {
         return GetAllResponse(list);
     }
 
-
+ 
     public UserResponseDTO getById(int id){
 
 
-        User user = userRepo.findById(id);
+        User user = userRepo.findById(id).orElseThrow(()-> new ResourceNotFound());
            
             UserResponseDTO dto =  new UserResponseDTO();             
         dto.setEmail(user.getEmail());
