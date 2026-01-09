@@ -11,7 +11,7 @@ import jakarta.persistence.OneToOne;
 public class Doctor {
    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String qualification;
     private String experience ;
@@ -34,8 +34,8 @@ public class Doctor {
         return id;
     }
 
-    public void setDoc_Id(int doc_Id) {
-        this.id = doc_Id;
+    public void setDoc_Id(int id) {
+        this.id = id;
     }
 
     public String getQualification() {
@@ -54,9 +54,7 @@ public class Doctor {
         this.experience = experience;
     }
 
-    public String isAvailabilityStatus() {
-        return availabilityStatus;
-    }
+   
 
     public void setAvailabilityStatus(String availabilityStatus) {
         this.availabilityStatus = availabilityStatus;

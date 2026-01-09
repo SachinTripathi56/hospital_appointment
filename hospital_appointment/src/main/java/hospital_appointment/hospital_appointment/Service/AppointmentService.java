@@ -9,9 +9,11 @@ import hospital_appointment.hospital_appointment.Entities.Appointment;
 import hospital_appointment.hospital_appointment.Entities.Doctor;
 import hospital_appointment.hospital_appointment.Entities.Patient;
 import hospital_appointment.hospital_appointment.GlobalExceptions.ResourceNotFound;
+import hospital_appointment.hospital_appointment.GlobalExceptions.SlotNotAvailableException;
 import hospital_appointment.hospital_appointment.repository.AppointmentRepo;
 import hospital_appointment.hospital_appointment.repository.DoctorRepo;
 import hospital_appointment.hospital_appointment.repository.Patientrepo;
+import jakarta.transaction.Transactional;
 
 @Component
 public class AppointmentService {
@@ -23,14 +25,30 @@ public class AppointmentService {
     private Patientrepo patientrepo;
     @Autowired
     private AppointmentRepo appointmentrepo;
-
+     
+    @Transactional
     public AppointmentResponseDTO createAppnt (AppointmentRequestDTO dto){
 
        
-           Patient patient = patientrepo.findById(dto.getPatient_id()).orElseThrow(()-> new ResourceNotFound("Patient id is not correct"));
-          Doctor  doctor = doctorRepo.findById(dto.getDoctor_id()).orElseThrow(()-> new ResourceNotFound("doctor id is not correct"));
      
        
+    boolean slotTaken =
+        appointmentrepo.existsByDoctorIdAndAppointmentDateAndAppointmentTime(
+            dto.getDoctor_id(),
+            dto.getAppnt_Date(),
+            dto.getAppnt_time()
+        );
+
+    if (slotTaken) {
+        throw new SlotNotAvailableException(
+            "This time slot is already booked for the doctor"
+        );
+    }
+
+    
+           Patient patient = patientrepo.findById(dto.getPatient_id()).orElseThrow(()-> new ResourceNotFound("Patient id is not correct"));
+          Doctor  doctor = doctorRepo.findById(dto.getDoctor_id()).orElseThrow(()-> new ResourceNotFound("doctor id is not correct"));
+
 
         Appointment appointment = new Appointment();
 
@@ -52,7 +70,7 @@ public class AppointmentService {
 
              dto.setAppnt_id(a.getId());
              dto.setDoctor_name(a.getDoctor().getUser().getName());
-             dto.setPatient_name(a.getDoctor().getUser().getName());
+             dto.setPatient_name(a.getPatient().getUser().getName());
              dto.setStatus(a.getBooking_status());
              dto.setDoctor_Id(a.getDoctor().getDoc_Id());
              dto.setPatient_Id(a.getPatient().getId());

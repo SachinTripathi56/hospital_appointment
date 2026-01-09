@@ -19,22 +19,24 @@ private DoctorRepo doctorRepo;
 private UserRepo userRepo;
 
 public DoctorResponseDTO createDoctor(DoctorRequestDTO dto){
-
+   
     User user = userRepo.findById(dto.getId()).orElseThrow(()-> new ResourceNotFound());
 
     if(!user.getRole().equalsIgnoreCase("doctor")){
         throw new IllegalStateException("User is not a doctor");
     }
- 
+ System.out.println(user.getName());
 
     Doctor doctor = new Doctor();
-
     doctor.setUser(user);
     doctor.setExperience(dto.getExperience());
     doctor.setQualification(dto.getQualification());
+    doctor.setAvailabilityStatus(dto.getAvailabilityStatus());
      Doctor saved = doctorRepo.save(doctor);
 
-     return Maptoresponse(saved);
+     System.out.println("hello this is doc id +"+saved.getDoc_Id());
+
+     return Maptoresponse(saved); 
 }
 
 private DoctorResponseDTO Maptoresponse(Doctor d){

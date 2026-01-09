@@ -15,8 +15,8 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 private int id;
-private LocalDate appnt_dat;
-private LocalTime appnt_Time;
+private LocalDate appointmentDate;
+private LocalTime appointmentTime;
 
 private String booking_status;
 
@@ -31,19 +31,19 @@ private Doctor doctor;
 private Patient patient;
 
     public LocalDate getAppnt_dat() {
-        return appnt_dat;
+        return appointmentDate;
     }
 
     public void setAppnt_dat(LocalDate appnt_dat) {
-        this.appnt_dat = appnt_dat;
+        this.appointmentDate = appnt_dat;
     }
 
     public LocalTime getAppnt_Time() {
-        return appnt_Time;
+        return appointmentTime;
     }
 
     public void setAppnt_Time(LocalTime appnt_Time) {
-        this.appnt_Time = appnt_Time;
+        this.appointmentTime = appnt_Time;
     }
 
     public String getBooking_status() {
