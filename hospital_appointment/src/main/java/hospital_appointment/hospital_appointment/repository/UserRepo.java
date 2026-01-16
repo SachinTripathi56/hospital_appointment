@@ -9,8 +9,10 @@ import org.springframework.stereotype.Repository;
 import hospital_appointment.hospital_appointment.Entities.User;
 
 
+
 @Repository
 public interface UserRepo extends JpaRepository<User, Integer> {
     public Optional<User> findById(int id);
+    public Optional<User> findByName(String name);
     
 }

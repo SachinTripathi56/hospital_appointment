@@ -16,6 +16,8 @@ public class User {
     private String name;
     private String phoneno;
     private String Email;
+    private String password;
+    
     @OneToOne(mappedBy = "user")
 private Doctor doctor;
 
@@ -71,6 +73,12 @@ private Patient patient;
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     
