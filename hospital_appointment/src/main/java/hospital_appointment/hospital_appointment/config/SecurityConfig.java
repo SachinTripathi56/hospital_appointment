@@ -18,6 +18,7 @@ import hospital_appointment.hospital_appointment.Service.CustomUserDetailService
 public class SecurityConfig {
 
     @Autowired
+    @SuppressWarnings("unused")
     private final CustomUserDetailService userDetailService;
 
 
@@ -43,15 +44,17 @@ public class SecurityConfig {
         
 
         http
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorizeRequest -> 
                 authorizeRequest
-                                 .requestMatchers("/CreateUser").permitAll()
+                                 .requestMatchers("/public/**").permitAll()
                                  .anyRequest().authenticated()
             )
             .formLogin(formLogin ->
                 formLogin
                     .loginPage("/login")
-                    .permitAll());  
+                    .permitAll()); 
+    
                                  
             return http.build();
     }

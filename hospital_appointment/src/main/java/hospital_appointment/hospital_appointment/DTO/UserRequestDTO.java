@@ -1,5 +1,6 @@
 package hospital_appointment.hospital_appointment.DTO;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -19,9 +20,11 @@ private String phone_no;
 
 @Email(message = "Invalid email format")
 @NotBlank
+@Column(unique = true)
 private String email;
 
 private String role;
+private String password;
 
 
 
@@ -67,6 +70,14 @@ private String role;
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 

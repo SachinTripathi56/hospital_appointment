@@ -3,6 +3,8 @@ package hospital_appointment.hospital_appointment.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import hospital_appointment.hospital_appointment.DTO.UserRequestDTO;
@@ -16,7 +18,8 @@ public class UserService {
     
      @Autowired
     private UserRepo userRepo;
-
+     
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
   
 
     public UserResponseDTO createUser(UserRequestDTO dto ){
@@ -27,6 +30,8 @@ public class UserService {
         user.setName(dto.getName());
         user.setPhoneno(dto.getPhone_no());
         user.setRole(dto.getRole());
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+
         
         User saved = userRepo.save(user);
    
