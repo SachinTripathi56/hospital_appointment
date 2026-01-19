@@ -15,7 +15,7 @@ import hospital_appointment.hospital_appointment.Service.UserService;
 
 @RestController
 public class UserController {
-   
+
      @Autowired
    private UserService userService;
 
